@@ -1,9 +1,9 @@
 from models import TaskList
-from task_operations import create_task, mark_task_completed
-from display import show_menu, show_all_tasks, show_task_details
+from task_operations import create_task, mark_task_completed, delete_task
+from display import show_all_tasks, show_task_details, show_menu
 
 def main():
-    """Función principal del programa: solo permite crear tareas"""
+    """Función principal del programa"""
     task_list = TaskList()
     
     while True:
@@ -27,6 +27,15 @@ def main():
             else:
                 print("\nTarea marcada como completada:")
                 show_task_details(task)
+        
+        elif choice == "4":
+            show_all_tasks(task_list)
+            task_id = input("\nIngrese el ID de la tarea a eliminar: ")
+            success, error = delete_task(task_list, task_id)
+            if error:
+                print(f"\nError: {error}")
+            else:
+                print("\nTarea eliminada exitosamente")
         
         elif choice == "5":
             print("\n¡Hasta luego!")
