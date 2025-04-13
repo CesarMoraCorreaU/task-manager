@@ -1,6 +1,6 @@
 from models import TaskList
 from task_operations import create_task
-from display import show_menu
+from display import show_menu, show_all_tasks
 
 def main():
     """Función principal del programa: solo permite crear tareas"""
@@ -14,6 +14,9 @@ def main():
             description = input("Ingrese la descripción de la tarea: ")
             task = create_task(task_list, description)
             print(f"\nTarea creada con ID: {task.id}")
+        
+        elif choice == "2":
+            show_all_tasks(task_list)
         
         elif choice == "5":
             print("\n¡Hasta luego!")

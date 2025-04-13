@@ -14,3 +14,13 @@ def create_task(task_list, description):
     new_task = Task(description)
     task_list.add_task(new_task)
     return new_task
+
+def list_all_tasks(task_list):
+    """
+    Obtiene todas las tareas de la lista
+    Args:
+        task_list: Objeto TaskList
+    Returns:
+        list: Lista de todas las tareas
+    """
+    return task_list.get_all_tasks()
