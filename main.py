@@ -1,6 +1,6 @@
 from models import TaskList
-from task_operations import create_task
-from display import show_menu, show_all_tasks
+from task_operations import create_task, mark_task_completed
+from display import show_menu, show_all_tasks, show_task_details
 
 def main():
     """Función principal del programa: solo permite crear tareas"""
@@ -17,6 +17,16 @@ def main():
         
         elif choice == "2":
             show_all_tasks(task_list)
+        
+        elif choice == "3":
+            show_all_tasks(task_list)
+            task_id = input("\nIngrese el ID de la tarea a completar: ")
+            task, error = mark_task_completed(task_list, task_id)
+            if error:
+                print(f"\nError: {error}")
+            else:
+                print("\nTarea marcada como completada:")
+                show_task_details(task)
         
         elif choice == "5":
             print("\n¡Hasta luego!")

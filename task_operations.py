@@ -24,3 +24,18 @@ def list_all_tasks(task_list):
         list: Lista de todas las tareas
     """
     return task_list.get_all_tasks()
+
+def mark_task_completed(task_list, task_id):
+    """
+    Marca una tarea como completada
+    Args:
+        task_list: Objeto TaskList
+        task_id: ID de la tarea
+    Returns:
+        tuple: (Task|None, error_message|None)
+    """
+    task = task_list.find_task_by_id(task_id)
+    if task:
+        task.completed = True
+        return task, None
+    return None, "Task not found"
